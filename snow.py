@@ -12,8 +12,9 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 import pandas as pd
 list_1 = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 list_1 = list_1.set_index('Calories')
-streamlit.multiselect("Pick some calories:", list(list_1.index),[130,50,110])
-streamlit.dataframe(list_1)
+calories_selected=streamlit.multiselect("Pick some calories:", list(list_1.index),[130,50,110])
+calories_to_show = list_1.loc[calories_selected]
+streamlit.dataframe(calories_to_show)
 
 
 
