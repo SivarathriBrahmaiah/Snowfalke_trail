@@ -15,6 +15,9 @@ list_1 = list_1.set_index('Calories')
 calories_selected=streamlit.multiselect("Pick some calories:", list(list_1.index),[130,50,110])
 calories_to_show = list_1.loc[calories_selected]
 streamlit.dataframe(calories_to_show)
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response)
 
 
 
